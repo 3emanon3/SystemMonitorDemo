@@ -12,4 +12,10 @@
     <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="10.0.0" />
   </ItemGroup>
 
+    <ItemGroup>
+      <None Include="..\CoreUtils\CoreUtils.dll" Condition="Exists('..\CoreUtils\CoreUtils.dll')">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

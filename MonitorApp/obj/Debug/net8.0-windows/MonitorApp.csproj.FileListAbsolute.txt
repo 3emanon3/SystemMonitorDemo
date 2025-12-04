@@ -31,3 +31,4 @@ C:\Users\User\Desktop\Temporaly\SystemMonitorDemo\MonitorApp\obj\Debug\net8.0-wi
 C:\Users\User\Desktop\Temporaly\SystemMonitorDemo\MonitorApp\obj\Debug\net8.0-windows\MonitorApp.pdb
 C:\Users\User\Desktop\Temporaly\SystemMonitorDemo\MonitorApp\obj\Debug\net8.0-windows\MonitorApp.genruntimeconfig.cache
 C:\Users\User\Desktop\Temporaly\SystemMonitorDemo\MonitorApp\obj\Debug\net8.0-windows\ref\MonitorApp.dll
+C:\Users\User\Desktop\Temporaly\SystemMonitorDemo\MonitorApp\bin\Debug\net8.0-windows\CoreUtils.dll
