@@ -101,7 +101,7 @@ namespace MonitorApp
                 {
                     long seconds = GetSystemUptimeSeconds();
                     TimeSpan ts = TimeSpan.FromSeconds(seconds);
-                    uptimeStr = $"{ts.TotalHours} hours {ts.Minutes} minutes";
+                    uptimeStr = $"{ts.Hours} hours {ts.Minutes} minutes";
                 }catch (Exception ex)
                 {
                     uptimeStr = $"Error: {ex.Message}";
@@ -109,6 +109,10 @@ namespace MonitorApp
 
                 return new { Cpu = cpu, Mem = mem, Uptime = uptimeStr };
             });
+
+            CpuUsage = result.Cpu;
+            MemoryUsage = result.Mem;
+            Uptime = result.Uptime;
         }
 
         /// <summary>
