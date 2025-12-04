@@ -89,25 +89,26 @@ namespace MonitorApp
         /// Updates CPU, memory, and uptime data
         /// Called every second by the timer
         /// </summary>
-        private void UpdateData(object sender, EventArgs e)
+        private async void UpdateData(object sender, EventArgs e)
         {
-            // Get CPU usage
-            CpuUsage = _cpuCounter.NextValue();
-            
-            // Get memory usage
-            MemoryUsage = _memoryCounter.NextValue();
-            
-            // Get system uptime from C++ DLL
-            try
+            var result = await Task.Run(() =>
             {
-                long seconds = GetSystemUptimeSeconds();
-                TimeSpan ts = TimeSpan.FromSeconds(seconds);
-                Uptime = $"{ts.Hours} hours {ts.Minutes} minutes";
-            }
-            catch (Exception ex)
-            {
-                Uptime = $"Error: {ex.Message}";
-            }
+                float cpu = _cpuCounter.NextValue();
+                float mem = _memoryCounter.NextValue();
+                
+                string uptimeStr = "";
+                try
+                {
+                    long seconds = GetSystemUptimeSeconds();
+                    TimeSpan ts = TimeSpan.FromSeconds(seconds);
+                    uptimeStr = $"{ts.TotalHours} hours {ts.Minutes} minutes";
+                }catch (Exception ex)
+                {
+                    uptimeStr = $"Error: {ex.Message}";
+                }
+
+                return new { Cpu = cpu, Mem = mem, Uptime = uptimeStr };
+            });
         }
 
         /// <summary>
